@@ -4,25 +4,26 @@ importScripts('https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging-comp
 
 // LA MISMA configuración
 firebase.initializeApp({
-  apiKey: "AIzaSyC3CrHmaipg81dByP8rLEhfgtISHvqPAcU",
-  authDomain: "beard-tracker-51dcd.firebaseapp.com",
-  projectId: "beard-tracker-51dcd",
-  messagingSenderId: "543376237533",
-  appId: "1:543376237533:web:f33d3ee08f128219e40c34"
+    apiKey: "AIzaSyC3CrHmaipg81dByP8rLEhfgtISHvqPAcU",
+    authDomain: "beard-tracker-51dcd.firebaseapp.com",
+    projectId: "beard-tracker-51dcd",
+    messagingSenderId: "543376237533",
+    appId: "1:543376237533:web:f33d3ee08f128219e40c34"
 });
 
 const messaging = firebase.messaging();
 
 // Manejar notificaciones en segundo plano
 messaging.onBackgroundMessage((payload) => {
-    console.log('Notificación en background:', payload);
+    console.log('🔵 Notificación en BACKGROUND:', payload);
 
-    const notificationTitle = payload.notification.title;
-    const notificationOptions = {
-        body: payload.notification.body,
-        icon: '/icon-192.png',
-        badge: '/badge-72.png'
-    };
-
-    self.registration.showNotification(notificationTitle, notificationOptions);
+    self.registration.showNotification(
+        payload.notification.title,
+        {
+            body: payload.notification.body,
+            icon: '/gigachad.jpg',
+            tag: 'unique-tag', // Importante: mismo tag = misma notificación (se reemplaza)
+            requireInteraction: true
+        }
+    );
 });

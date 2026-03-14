@@ -39,7 +39,7 @@ export default function Home() {
 
         await registerTreatment(userId);
 
-        // NUEVO: notificar al compañero si existe
+        console.log(partnerId)
         if (partnerId) {
             await notifyPartner(
                 partnerId,
@@ -52,10 +52,18 @@ export default function Home() {
     }
 
     // NUEVO: activar notificaciones
-    async function handleEnableNotifications() {
+    const handleEnableNotifications = async () => {
+        // Desactivar primero si ya estaban activadas
+        if ('serviceWorker' in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            for (let reg of registrations) {
+                await reg.unregister();
+            }
+        }
+
         const success = await setupNotifications(userId);
         setNotificationsEnabled(success);
-    }
+    };
 
     useEffect(() => {
 
