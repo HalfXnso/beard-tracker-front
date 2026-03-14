@@ -9,7 +9,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['public/gigachad.jpg'], // Los assets en public/ se refieren sin ruta
+      includeAssets: ['assets/gigachad.jpg'], // Los assets en public/ se refieren sin ruta
       manifest: {
         name: 'BarbaTracker',
         short_name: 'BarbaTracker',
@@ -21,14 +21,14 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: 'gigachad.jpg',  // Sin punto, con slash al inicio
+            src: '/assets/gigachad.jpg',  // Ruta actualizada
             sizes: '192x192',
-            type: 'image/jpeg'      // image/jpeg, no image/jpg
+            type: 'image/jpeg'
           },
           {
-            src: 'gigachad.jpg',  // Sin punto, con slash al inicio
+            src: '/assets/gigachad.jpg',  // Ruta actualizada
             sizes: '512x512',
-            type: 'image/jpeg'      // image/jpeg, no image/jpg
+            type: 'image/jpeg'
           }
         ]
       },
