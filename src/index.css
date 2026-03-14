@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+.custom-text-gradient {
+  font-weight: bold;
+  background-image: linear-gradient(135deg, #1c1917 0%,
+      #57534e 35%,
+      #a16207 70%,
+      #facc15 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Definimos el grosor y color del borde */
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+
+  /* IMPORTANTE: Pone el borde por debajo del gradiente */
+  paint-order: stroke fill;
+
+  animation: shine 4s linear infinite;
+}
+
+.custom-background {
+
+  background-image: linear-gradient(135deg, #1c1917 0%,
+      #57534e 35%,
+      #a16207 70%,
+      #facc15 100%);
+
+
+}
+
+.pene {
+  color: rgba(255, 255, 255, 0.925);
+}
+
+/* Versión alternativa con patrón más suave */
+body {
+  min-height: 100vh;
+  position: relative;
+  background-color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('gigachad.jpg');
+  background-size: 150px 150px;
+  background-repeat: repeat;
+  animation: diagonalSmooth 30s linear infinite;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+@keyframes diagonalSmooth {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 300px 300px;
+    /* Mismo tamaño que background-size */
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 50px;
+  font-family: Arial, sans-serif;
+}
