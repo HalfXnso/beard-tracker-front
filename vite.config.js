@@ -5,11 +5,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   plugins: [
-    react(), 
+    react(),
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['gigachad.jpg'], // Los assets en public/ se refieren sin ruta
+      includeAssets: ['public/gigachad.jpg'], // Los assets en public/ se refieren sin ruta
       manifest: {
         name: 'BarbaTracker',
         short_name: 'BarbaTracker',
@@ -21,19 +21,21 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: '/gigachad.jpg',  // Sin punto, con slash al inicio
+            src: 'gigachad.jpg',  // Sin punto, con slash al inicio
             sizes: '192x192',
             type: 'image/jpeg'      // image/jpeg, no image/jpg
           },
           {
-            src: '/gigachad.jpg',  // Sin punto, con slash al inicio
+            src: 'gigachad.jpg',  // Sin punto, con slash al inicio
             sizes: '512x512',
             type: 'image/jpeg'      // image/jpeg, no image/jpg
           }
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,json}'] // Añadido jpg/jpeg
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,json}'],
+        globDirectory: 'dist', // Añadir esto
+        globIgnores: ['**/node_modules/**/*'] // Añadir esto
       }
     })
   ]
