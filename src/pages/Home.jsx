@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { registerTreatment, getStatus, getTreatmentCount } from "../services/api";
 import Guidelines from "./Guidelines";
 import { setupNotifications, notifyPartner } from "../services/notifications"; // NUEVO
+import Swal from "sweetalert2";
 
 export default function Home() {
 
@@ -36,6 +37,12 @@ export default function Home() {
 
     // MODIFICADO: ahora notifica al compañero
     async function handleTreatment() {
+
+         Swal.fire({
+            title: '¡Tratamiento aplicado!',
+            text: 'No le des más veces hostia.',
+            icon: 'success',
+          });
 
         await registerTreatment(userId);
 
